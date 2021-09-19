@@ -2,6 +2,8 @@ package com.meicode.justjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.*;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -22,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     //    Button          android:onClick="submitOrder" this is defined in main.xml file so used here
     public void submitOrder(View view) {
-        display(1);
+        int numberOfCoffee = 3;
+        display(numberOfCoffee);
+        displayPrice(numberOfCoffee* 5);
     }
 
     private void display(int numbers) {

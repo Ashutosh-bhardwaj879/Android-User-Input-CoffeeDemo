@@ -24,11 +24,22 @@ public class MainActivity extends AppCompatActivity {
 
     //    Button          android:onClick="submitOrder" this is defined in main.xml file so used here
     public void submitOrder(View view) {
+        int numberOfCoffee = 5;
+        display(numberOfCoffee);
+        displayPrice(numberOfCoffee* 5);
+    }
+//when we click  +  button
+    public void increment(View view) {
         int numberOfCoffee = 3;
         display(numberOfCoffee);
         displayPrice(numberOfCoffee* 5);
     }
-
+//when we click  -  button
+    public void decrement(View view){
+        int numberOfCoffee = 1;
+        display(numberOfCoffee);
+        displayPrice(numberOfCoffee* 5);
+    }
     private void display(int numbers) {
         //finding the quantity initial value
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);

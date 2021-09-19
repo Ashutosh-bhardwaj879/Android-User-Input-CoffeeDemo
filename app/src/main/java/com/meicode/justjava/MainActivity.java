@@ -14,32 +14,36 @@ import java.text.NumberFormat;
 
 //CLASS 18 STARTED
 public class MainActivity extends AppCompatActivity {
-
+    int quantity = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //resource.layout.activitymain
     }
-
+    
     //    Button          android:onClick="submitOrder" this is defined in main.xml file so used here
     public void submitOrder(View view) {
-        int numberOfCoffee = 5;
-        display(numberOfCoffee);
-        displayPrice(numberOfCoffee* 5);
+        displayPrice(quantity*5);
     }
+
+
 //when we click  +  button
     public void increment(View view) {
-        int numberOfCoffee = 3;
-        display(numberOfCoffee);
-        displayPrice(numberOfCoffee* 5);
+        quantity = quantity + 1;
+        if (quantity >= 0) {
+            display(quantity);
+        }
     }
+
 //when we click  -  button
-    public void decrement(View view){
-        int numberOfCoffee = 1;
-        display(numberOfCoffee);
-        displayPrice(numberOfCoffee* 5);
+    public void decrement(View view) {
+        quantity = quantity - 1;
+        if (quantity >= 0) {
+            display(quantity);
+        }
     }
+
     private void display(int numbers) {
         //finding the quantity initial value
         TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
@@ -47,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText(" " + numbers);
     }
 
+
     private void displayPrice(int number) {
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
     }
+
+
 }

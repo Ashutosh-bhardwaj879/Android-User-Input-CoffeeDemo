@@ -24,9 +24,18 @@ public class MainActivity extends AppCompatActivity {
 
     //    Button          android:onClick="submitOrder" this is defined in main.xml file so used here
     public void submitOrder(View view) {
-        displayPrice(quantity*5);
+        String priceMessage = "Total : $ " + quantity*5;
+        priceMessage += "\nThankYou";
+        displayMessage(priceMessage);
     }
 
+
+    private void displayMessage(String message){
+        TextView priceTextView = (TextView)findViewById(R.id.price_text_view);
+
+        priceTextView.setText(message);
+
+    }
 
 //when we click  +  button
     public void increment(View view) {

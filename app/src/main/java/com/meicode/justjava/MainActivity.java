@@ -25,8 +25,7 @@ public class MainActivity extends AppCompatActivity {
     //    Button          android:onClick="submitOrder" this is defined in main.xml file so used here
     public void submitOrder(View view) {
         int price=calculatePrice();
-        String priceMessage = createOrderSummary(price);
-        displayMessage(priceMessage);
+        displayMessage(createOrderSummary(price));
     }
 
     private int calculatePrice(){
@@ -41,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         return priceMessage;
     }
 
-    private void displayMessage(String message){
-        TextView priceTextView = findViewById(R.id.price_text_view);
 
-        priceTextView.setText(message);
+    private void displayMessage(String message){
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
 
     }
 
@@ -75,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
 
      private void displayPrice(int number) {
-         TextView priceTextView = findViewById(R.id.price_text_view);
-         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+         TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+         orderSummaryTextView.setText(NumberFormat.getCurrencyInstance().format(number));
      }
 
 

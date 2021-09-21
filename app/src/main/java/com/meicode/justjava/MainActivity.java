@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 
 
-import java.text.NumberFormat;
+//import java.text.NumberFormat;
 
 //CLASS 18 STARTED
 public class MainActivity extends AppCompatActivity {
@@ -72,11 +72,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+/*
      private void displayPrice(int number) {
          TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
          orderSummaryTextView.setText(NumberFormat.getCurrencyInstance().format(number));
      }
-
+*/
 
 }

@@ -2,13 +2,13 @@ package com.meicode.justjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.*;
+
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+
 
 import java.text.NumberFormat;
 
@@ -24,14 +24,25 @@ public class MainActivity extends AppCompatActivity {
 
     //    Button          android:onClick="submitOrder" this is defined in main.xml file so used here
     public void submitOrder(View view) {
-        String priceMessage = "Total : $ " + quantity*5;
-        priceMessage += "\nThankYou";
+        int price=calculatePrice();
+        String priceMessage = createOrderSummary(price);
         displayMessage(priceMessage);
     }
 
+    private int calculatePrice(){
+        return quantity*5;
+    }
+
+    private String createOrderSummary(int price){
+        String priceMessage = "Name : Ashutosh Bhardwaj";
+        priceMessage += "\nQuantity "  + quantity;
+        priceMessage += "\nTotal : $ " + price;
+        priceMessage += "\nThank You";
+        return priceMessage;
+    }
 
     private void displayMessage(String message){
-        TextView priceTextView = (TextView)findViewById(R.id.price_text_view);
+        TextView priceTextView = findViewById(R.id.price_text_view);
 
         priceTextView.setText(message);
 
@@ -55,16 +66,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void display(int numbers) {
         //finding the quantity initial value
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
         //setting new value to the quantity text
-        quantityTextView.setText(" " + numbers);
+        String res = " " + numbers;
+        quantityTextView.setText(res);
+
     }
 
 
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
+     private void displayPrice(int number) {
+         TextView priceTextView = findViewById(R.id.price_text_view);
+         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+     }
 
 
 }

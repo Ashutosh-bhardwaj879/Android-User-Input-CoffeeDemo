@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 //import java.text.NumberFormat;
@@ -40,15 +41,23 @@ public class MainActivity extends AppCompatActivity {
         //checking the chocolate check box
         boolean hasChocolate = chocolateCheckBox.isChecked();
 
-        int price = calculatePrice();
-        displayMessage(createOrderSummary(name,price, hasWhippedCream, hasChocolate));
+        int price = calculatePrice(hasWhippedCream, hasChocolate);
+        displayMessage(createOrderSummary(name, price, hasWhippedCream, hasChocolate));
     }
 
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate) {
+        int basePrice = 5;
+
+        if (hasWhippedCream) {
+            basePrice += 1;
+        }
+        if (hasChocolate) {
+            basePrice += 2;
+        }
+        return quantity * basePrice;
     }
 
-    private String createOrderSummary(String name,int price, boolean hasWhippedCream, boolean hasChocolate) {
+    private String createOrderSummary(String name, int price, boolean hasWhippedCream, boolean hasChocolate) {
         String priceMessage = "Name : " + name;
         priceMessage += "\nAdded Whipped Cream? " + hasWhippedCream;
         priceMessage += "\nAdded Chocolate? " + hasChocolate;
@@ -67,18 +76,24 @@ public class MainActivity extends AppCompatActivity {
 
     //when we click  +  button
     public void increment(View view) {
-        quantity = quantity + 1;
-        if (quantity >= 0) {
-            display(quantity);
+        if (quantity >= 2) {
+            Toast.makeText(this,"You cannot have more then 2 coffee",Toast.LENGTH_SHORT).show();
+            return;
         }
+        quantity = quantity + 1;
+        display(quantity);
+
     }
 
     //when we click  -  button
     public void decrement(View view) {
-        quantity = quantity - 1;
-        if (quantity >= 0) {
-            display(quantity);
+        if (quantity <= 0) {
+            Toast.makeText(this,"You cannot have less than 0 coffee",Toast.LENGTH_SHORT).show();
+            return;
         }
+        quantity = quantity - 1;
+        display(quantity);
+
     }
 
     private void display(int numbers) {

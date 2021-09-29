@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 
@@ -24,16 +25,22 @@ public class MainActivity extends AppCompatActivity {
 
     //    Button          android:onClick="submitOrder" this is defined in main.xml file so used here
     public void submitOrder(View view) {
+    //working on check box
+        CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_checkbox);
+    //checking is check box ticked or not
+        boolean hasWhippedCream  = whippedCreamCheckBox.isChecked();
+
         int price=calculatePrice();
-        displayMessage(createOrderSummary(price));
+        displayMessage(createOrderSummary(price,hasWhippedCream));
     }
 
     private int calculatePrice(){
         return quantity*5;
     }
 
-    private String createOrderSummary(int price){
+    private String createOrderSummary(int price,boolean hasWhippedCream){
         String priceMessage = "Name : Ashutosh Bhardwaj";
+        priceMessage += "\nAdded Whipped Cream? " + hasWhippedCream;
         priceMessage += "\nQuantity "  + quantity;
         priceMessage += "\nTotal : $ " + price;
         priceMessage += "\nThank You";
@@ -71,12 +78,5 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText(res);
 
     }
-
-/*
-     private void displayPrice(int number) {
-         TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
-         orderSummaryTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-     }
-*/
 
 }

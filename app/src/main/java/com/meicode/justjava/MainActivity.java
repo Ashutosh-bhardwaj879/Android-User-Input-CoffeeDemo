@@ -3,12 +3,16 @@ package com.meicode.justjava;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 
 
 //import java.text.NumberFormat;
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     //    Button          android:onClick="submitOrder" this is defined in main.xml file so used here
     public void submitOrder(View view) {
+
         //edit text and find view by id
         EditText nameField = findViewById(R.id.name_field);
 
@@ -43,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
 
         int price = calculatePrice(hasWhippedCream, hasChocolate);
         displayMessage(createOrderSummary(name, price, hasWhippedCream, hasChocolate));
+//APPLYING GOOGLE MAP INTENT
+        Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        }
+//APPLYING EMAIL INTENT
+
     }
 
     private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate) {

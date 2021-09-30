@@ -46,17 +46,25 @@ public class MainActivity extends AppCompatActivity {
         //checking the chocolate check box
         boolean hasChocolate = chocolateCheckBox.isChecked();
 
-        int price = calculatePrice(hasWhippedCream, hasChocolate);
-        displayMessage(createOrderSummary(name, price, hasWhippedCream, hasChocolate));
+        int priceMessage = calculatePrice(hasWhippedCream, hasChocolate);
+        displayMessage(createOrderSummary(name, priceMessage, hasWhippedCream, hasChocolate));
 //APPLYING GOOGLE MAP INTENT
+        /*
         Uri gmmIntentUri = Uri.parse("geo:37.7749,-122.4194");
         Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         mapIntent.setPackage("com.google.android.apps.maps");
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
         }
+        */
 //APPLYING EMAIL INTENT
-
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(intent.EXTRA_SUBJECT,"just java order for"+name);
+        intent.putExtra(Intent.EXTRA_TEXT,priceMessage);
+        if(intent.resolveActivity(getPackageManager())!=null){
+            startActivity(intent);
+        }
     }
 
     private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate) {

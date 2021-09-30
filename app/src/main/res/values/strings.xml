@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Just java</string>
     <string name="toppings">TOPPINGS</string>
     <string name="_0">$0</string>
@@ -10,4 +10,6 @@
     <string name="minus">-</string>
     <string name="whipped_cream">Whipped Cream</string>
     <string name="chocolate">Chocolate</string>
+    <string name="thank_you">Thank You</string>
+    <string name="order_summary_name">Name : <xliff:g id ="name" example="amy">%s</xliff:g></string>
 </resources>

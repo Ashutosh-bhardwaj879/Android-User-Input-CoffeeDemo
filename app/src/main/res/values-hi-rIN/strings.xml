@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Just java</string>
+    <string name="order">arder</string>
+    <string name="order_summary">arder leka  jokha</string>
+    <string name="quantity">tulya</string>
+    <string name="toppings">upar se</string>
+    <string name="chocolate">chaklet</string>
+    <string name="thank_you">dhanyavad</string>
+</resources>
